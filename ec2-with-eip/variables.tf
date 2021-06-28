@@ -1,7 +1,7 @@
 variable "ami_id" {
   description = "ID of AMI to use"
   type        = string
-  default     = "ami-011c99152163a87ae"
+  default     = "<ami-id>"
 }
 
 variable "instance_type" {
@@ -12,10 +12,10 @@ variable "instance_type" {
 
 variable "az" {
   type        = string
-  default     = "ap-south-1a"
+  default     = "<az-name>"
 }
 
 variable "vpc_id" {
   type        = string
-  default     = "vpc-6370bf08"
+  default     = "<vpc-id>"
 }
