@@ -1,3 +1,3 @@
 provider "aws" {
-  region = "<region>"
+  region = "ap-south-1"
 }

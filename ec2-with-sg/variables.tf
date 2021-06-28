@@ -1,4 +1,4 @@
 variable "vpc_id" {
   type = string
-  default = "<vpc_id>"
+  default = "vpc-6370bf08"
 }

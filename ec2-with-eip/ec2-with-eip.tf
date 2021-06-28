@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
   ami           = var.ami_id
   instance_type = var.instance_type
   availability_zone = var.az
-  key_name = "<key-name>"
+  key_name = "devendra-personal"
   security_groups = ["allow_ssh"]
 
   depends_on = [aws_security_group.allow_ssh]
