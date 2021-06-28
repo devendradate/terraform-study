@@ -3,12 +3,12 @@
 #create instance
 
 resource "aws_instance" "first-instance" {
-  ami           = "ami-011c99152163a87ae"
+  ami           = "<ami>"
   instance_type = "t2.micro"
   associate_public_ip_address = true
-  availability_zone = "ap-south-1a"
+  availability_zone = "<az>"
   instance_initiated_shutdown_behavior = "terminate"
-  key_name = "devendra-personal"
+  key_name = "<key>"
   security_groups = ["allow_ssh"]
   
   depends_on = [aws_security_group.allow_ssh]
