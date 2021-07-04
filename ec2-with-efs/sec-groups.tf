@@ -1,4 +1,4 @@
-resource "aws_security_group" "ec2" {
+resource "aws_security_group" "ec2" { #this is for EC2 instance
   name        = "ec2-with-efs-sg"
   description = "Allow ec2 inbound traffic"
   vpc_id      = var.vpc_id
@@ -24,7 +24,7 @@ resource "aws_security_group" "ec2" {
   }
 }
 
-resource "aws_security_group" "efs" {
+resource "aws_security_group" "efs" { #this is for EFS
   name        = "security-grp-for-efs"
   description = "Allow efs inbound traffic"
   vpc_id      = var.vpc_id
@@ -35,7 +35,7 @@ resource "aws_security_group" "efs" {
     to_port          = 2049
     protocol         = "tcp"
    # cidr_blocks      = ["0.0.0.0/0"]
-   security_groups = [aws_security_group.ec2.id]  #add security group id in Source
+   security_groups = [aws_security_group.ec2.id]  #add security group id of EC2 instance in Source
   }
 
   egress {
