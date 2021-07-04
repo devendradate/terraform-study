@@ -1,0 +1,15 @@
+This Terraform code does following,
+
+1. Creates EFS with 3 different mounts in 3 different AZ's
+2. Creates SG for EC2 and EFS
+3. Creates 2 EC2 instances in different AZ's
+
+Below Steps are Manual, to install nfs and mount EFS on both EC2
+
+1. yum install amazon-efs-utils
+2. mkdir efs-mount-point/
+3. sudo mount -t efs <efs-id> efs-mount-point/
+
+To Test,
+
+Create one file in that folder, it should automatically gets create in second instance due to EFS.
