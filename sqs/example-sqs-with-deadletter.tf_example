@@ -1,0 +1,39 @@
+#==============================================================
+# Create a Prospect Insert SQS Queue and Dlq
+#==============================================================
+
+# Create a Prospect SQS Queue
+resource "aws_sqs_queue" "prospect" {
+  name                       = "prospect-created-sqs-queue"
+  visibility_timeout_seconds = 3600
+
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.prospect_dlq.arn
+    maxReceiveCount     = 5
+  })
+
+  tags = merge(
+    local.common_tags,
+    map(
+      "Name", "Prospect SQS Queue",
+      "Code Repo", "https://bitbucket.org/efinancial/bmta-terraform-iac/src/master/sqs.tf",
+      "Application_Type", "AWS SQS"
+    )
+  )
+}
+
+# Create a Prospect SQS Dead Letter Queue
+resource "aws_sqs_queue" "prospect_dlq" {
+  name                       = "prospect-created-sqs-dlq"
+  visibility_timeout_seconds = 3600
+  message_retention_seconds  = 1209600
+
+  tags = merge(
+    local.common_tags,
+    map(
+      "Name", "Prospect SQS Dead Letter Queue",
+      "Code Repo", "https://bitbucket.org/efinancial/bmta-terraform-iac/src/master/sqs.tf",
+      "Application_Type", "AWS SQS"
+    )
+  )
+}
