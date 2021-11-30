@@ -35,4 +35,4 @@ resource "aws_iam_policy" "consumer" {
 resource "aws_iam_policy" "pusher" {
   name   = "sqs-${var.sqs_name}-pusher"
   policy = data.aws_iam_policy_document.pusher.json
-}%
+}
